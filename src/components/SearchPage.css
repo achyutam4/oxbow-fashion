@@ -1,0 +1,19 @@
+.search-container{
+    display:flex;
+    align-items: center;
+    position:relative;
+}
+
+.search-bar {
+    padding: 8px 35px 8px 10px;
+}
+
+.search-button{
+    position:absolute;
+    right:10px;
+    top:9px;
+    border:none;
+    background:none;
+    cursor:pointer;
+    text-decoration: none;
+}

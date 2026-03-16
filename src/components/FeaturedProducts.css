@@ -1,0 +1,72 @@
+
+.featured-products{
+padding: 20px 0;
+text-align: center;
+}
+
+.featured-products h2{
+    font-size: 45px;
+    margin:20px 40px;
+    font-family: "Caveat",cursive; 
+    
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px; 
+}
+
+.card {
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border-radius: 5px;
+}
+
+.product-link {
+  text-decoration: none;
+}
+
+.card img {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+
+.card h4 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: black;
+}
+
+.card p {
+  font-weight: bold;
+  color: black;
+}
+
+.card:hover {
+  transform: scale(1.04);
+}
+
+.view-more-container{
+display:flex;
+justify-content:center; 
+margin-top:30px;
+}
+
+.view-more{
+padding:10px 25px;
+background:#1DB79E;
+color:white;
+text-decoration:none;
+border-radius:6px;
+font-weight:600;
+transition:0.3s;
+}
+
+.view-more:hover{
+background:#159d86;
+}

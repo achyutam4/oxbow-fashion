@@ -1,0 +1,130 @@
+.product-details {
+    display: flex;
+    gap:50px;
+    padding:60px 10%;
+    /* align-items: center; */
+}
+
+.product-image img {
+    width: 400px;
+    border-radius: 10px; 
+    object-fit: cover;
+}
+
+
+.product-info{
+    max-width:500px;
+    
+}
+
+.product-info h2{
+    font-size: 32px;    
+}
+
+
+.price{
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom:20px ;
+}
+
+.description {
+    margin-bottom: 30px;
+    line-height:1.6;
+    color:#555;
+}
+
+.add-to-cart {
+    padding: 12px 30px;
+    background-color: black;
+    color:white;
+    border:none;
+    cursor:pointer;
+    font-size:16px;
+    border-radius: 5px;
+    transition:0.3s;
+    margin-right: 10px;
+}
+
+.add-to-cart:hover{
+    background-color: #444;
+}
+
+.wishlist-btn {
+    padding: 9px 30px;
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: 0.3s;
+    margin-right: 10px;
+}
+
+.wishlist-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.wishlist-btn.active {
+    background-color: #ff4757;
+    color: white;
+    border-color: #ff4757;
+}
+
+.sizes button,
+
+.colors{
+     margin-top: 20px;
+}
+
+.colors button {
+    margin: 8px 10px 8px 0;
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    background:white;
+    cursor: pointer;
+    border-radius:5px;
+}
+
+.sizes {
+    margin-top: 10px;
+}
+
+.sizes button {
+    margin: 8px 10px 8px 0;
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    background:white;
+    cursor: pointer;
+    border-radius:5px;
+}
+
+.sizes button.active,
+.colors button.active{
+    background:black;
+    color:white;
+}
+
+.reviews {
+    margin-top:40px;
+}
+
+.review-card {
+    padding:15px;
+    border: 1px solid #eee;
+    border-radius:5px;
+}
+
+.reviews-toggle {
+    padding: 3px;
+    margin-left: 5px; 
+    background-color: white; 
+    text-decoration: underline;
+    color: black;
+    border:none;    
+    cursor:pointer;
+    font-size:16px;
+    border-radius: 5px;
+    transition:0.3s;
+}
