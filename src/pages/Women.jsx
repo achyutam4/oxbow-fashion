@@ -82,7 +82,7 @@
               </select>
       </div>  
         
-        <div className="product-grid">
+        <div className="products-grid">
           {filteredProducts.map((product) => (
             <div
              // to={`/product/${product.id}`}

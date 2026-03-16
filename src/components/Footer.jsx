@@ -8,7 +8,11 @@ function Footer() {
             <div className="footer-container">
 
                 <div className="footer-column">
-                    <h2 className="footer-logo">Oxbow</h2>
+                    <h2 className="footer-logo">
+                         <Link to="/">
+                          <img src="/src/assets/oxbow.png" alt="oxbow"/>
+                         </Link> 
+                    </h2>
                     <p className="footer-tagline"></p>
 
                     <div className="social-icons">

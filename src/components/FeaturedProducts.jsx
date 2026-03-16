@@ -8,6 +8,7 @@ function FeaturedProducts() {
   const[product, setProduct]= useState(null);
   const [currentImage, setCurrentImage] = useState(0);
 
+
    const nextImage = () => {
     setCurrentImage((prev) =>
       prev === product.images.length - 1 ? 0 : prev + 1,
@@ -32,12 +33,15 @@ function FeaturedProducts() {
            /* to={`/product/${product.id}`} */
             key={product.id}
             className="product-link"
-               onClick={() => setProduct(product)}
+               onClick={() => {
+                setProduct(product);
+                setCurrentImage(0);
+               }}
             >
 
             <div className="card" >
               <img src={product.image} alt={product.name} loading="lazy"/>
-              <h4>{product.name}</h4>
+              <h3>{product.name}</h3>
               <p>₹ {product.price}</p>
             </div>
 

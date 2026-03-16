@@ -26,7 +26,7 @@ function NewArrivals() {
              <h2>New Arrivals</h2>
          
       
-            <div className="product-grid">
+            <div className="products-grid">
               {products.slice(0,4).map((product) => (
                 <div
                   /*to={`/product/${product.id}`}*/ 

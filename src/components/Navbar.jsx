@@ -21,7 +21,7 @@
   <nav className="navbar">
     <div className="logo">
       <Link to="/">
-      <img src="/src/assets/oxbow.png" alt="oxbow" width="115px" height="45px" />
+      <img src="/src/assets/oxbow.png" alt="oxbow"/>
       </Link> 
    </div>
       
@@ -32,7 +32,7 @@
       <li><Link to="/accessories">Accessories</Link></li>
     </ul>
 
-      <img src="/src/assets/oxbow.png" alt="oxbow" width="115px" height="45px" className="logo-hidden" />    
+      <img src="/src/assets/oxbow.png" alt="oxbow" width="115px" height="45px" className="logo-hidden logo "/>    
 
 
    {/*/
