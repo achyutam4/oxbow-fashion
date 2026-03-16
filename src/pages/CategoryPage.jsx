@@ -90,7 +90,7 @@ return (
                 onClick={() => setProduct(product)}
              > 
              <img src={product.image} alt={product.title} />
-            <h4>{product.name}</h4>
+            <h3>{product.name}</h3>
             <p>₹ {product.price}</p> 
             </div>
         ))}
