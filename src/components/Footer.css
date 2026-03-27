@@ -109,9 +109,14 @@
     }
 }   
 
-
-
-@media (max-width: 480px){
+@media (max-width:519px) {
+    .footer-container{
+        text-align: center;
+    
+    .social-icons {
+        justify-content: center;
+    }
+    }
 
 }
 

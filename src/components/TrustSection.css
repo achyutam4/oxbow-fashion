@@ -11,6 +11,10 @@
 .trust-item{
     max-width:250px;
 }
+.trust-item img{
+    width: 120px;
+    height: 120px;
+}
 
 .trust-item h3{
     font-size:18px;
@@ -21,4 +25,20 @@
     font-size:14px;
     color:#666;
 }
+
+@media (max-width: 705px){
+
+.trust-item p {
+    font-size: 12px;
+}
+
+.trust-item img {
+    width:100px;
+    height: 100px;
+}
+
+    
+}
+
+
 

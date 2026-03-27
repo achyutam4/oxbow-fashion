@@ -13,10 +13,13 @@ function Footer() {
                           <img src="/src/assets/oxbow.png" alt="oxbow"/>
                          </Link> 
                     </h2>
-                    <p className="footer-tagline"></p>
+                
 
                     <div className="social-icons">
-                     <a href="https://www.instagram.com/oxbow_creation/"><FaInstagram/></a>
+                     <a href="https://www.instagram.com/oxbow_creation/">
+                     <FaInstagram/>
+                     </a>
+                    
                      <FaWhatsapp />
                      <FaFacebook />
                  

@@ -1,6 +1,7 @@
+
+
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
   background-color: #F8F6F2;
@@ -8,14 +9,18 @@
   position: sticky;
   top: 0; 
   z-index: 100;
+  width: 100%;
+  position:relative;
   }
 
-
-
+.logo{
+  z-index: 2;
+}
+/*
  .logo-hidden {
   visibility: hidden;
   flex-shrink: 0;
-}
+}*/
 
 .logo a {
   font-size: 24px;
@@ -36,6 +41,9 @@
   font-size:26px;
   gap: 30px;
   font-family:"Caveat", cursive; 
+  position:absolute;
+  left:50%;
+  transform: translateX(-50%);
 }
 
 
@@ -54,7 +62,7 @@
 @media (max-width: 1024px){ 
  
   .navbar {
-  padding: 7px  25px;
+  padding: 7px 25px;
 }
   .nav-links{
   font-size: 22px;
@@ -82,13 +90,61 @@
 }
 
 
+
+@media (max-width: 486px) {
+
+  .navbar {
+    padding: 6px 20px;
+  }
+
+  .nav-links {
+    font-size: 18px;
+   }
+
+  .logo img {
+    width: 65px;
+    height: 27px;
+  }
 }
 
 
-@media (max-width: 480px){
+@media (max-width:458px) {
+  .nav-links{
+    font-size: 16px;
+  }
 
+  .logo img {
+    width: 60px;
+    height: 25px;
+  }
+
+  .trust-item p {
+    font-size:12px;
+  }
 }
 
+@media (max-width:424px) {
+  .nav-links{
+    font-size: 14px;
+  }
+
+  .logo img {
+    width: 55px;
+    height: 22px;
+  }
+
+  
+@media (max-width:400px) {
+  .nav-links{
+    font-size: 10px;
+    gap: 15px;
+  }
+
+  .logo img {
+    width: 55px;
+    height: 22px;
+  }
+}
 
 
  /*

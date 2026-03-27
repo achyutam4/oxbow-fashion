@@ -31,8 +31,7 @@
       <li><Link to="/kids">Kids</Link></li>
       <li><Link to="/accessories">Accessories</Link></li>
     </ul>
-
-      <img src="/src/assets/oxbow.png" alt="oxbow" width="115px" height="45px" className="logo-hidden logo "/>    
+ 
 
 
    {/*/
