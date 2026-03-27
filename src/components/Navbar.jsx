@@ -21,7 +21,7 @@
   <nav className="navbar">
     <div className="logo">
       <Link to="/">
-      <img src="/src/assets/oxbow.png" alt="oxbow"/>
+      <img src="/oxbow.png" alt="oxbow"/>
       </Link> 
    </div>
       

@@ -1,11 +1,11 @@
-import lehenga from "../assets/lehenga.webp";
-import whitetop from "../assets/white-top_comp.webp";
-import chaniyacholi from "../assets/chaniya choli_comp.webp";
-import pinkcholi from "../assets/pink choli_comp.webp";
-import productfive from "../assets/product5_comp.webp";
-import productsix from "../assets/product6_comp.webp";
-import productseven from "../assets/product7_comp.webp";
-import producteight from "../assets/product 8_comp.webp";
+import lehenga from "/lehenga.webp"   
+import whitetop from "/white-top_comp.webp";
+import chaniyacholi from "/chaniya choli_comp.webp";
+import pinkcholi from "/pink choli_comp.webp";
+import productfive from "/product5_comp.webp";
+import productsix from "/product6_comp.webp";
+import productseven from "/product7_comp.webp";
+import producteight from "/product 8_comp.webp";
 
 const products = [
   {
@@ -786,7 +786,7 @@ const products = [
     name: "Orange Anarkali",
     price: 1699,
     image:
-      "https://images.pexels.com/photos/5922737/pexels-photo-5922737.jpeg?w=500&q=8",
+      "https://images.pexels.com/photos/5922737/pexels-photo-5922       737.jpeg?w=500&q=8",
     images: [
       "https://images.pexels.com/photos/5922737/pexels-photo-5922737.jpeg?w=500&q=8",
       "https://images.pexels.com/photos/18380705/pexels-photo-18380705.jpeg?w=500&q=8",

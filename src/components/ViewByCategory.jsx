@@ -1,14 +1,14 @@
     import { useNavigate } from "react-router-dom";
     import "./ViewByCategory.css"
 
-    import sarees from '../assets/sarees.avif';
-    import salwarsuits from '../assets/salwar-suits.jpg';
-    import lehengas from '../assets/lehengas.webp';
-    import kurties from '../assets/krutiss.webp';
-    import dupatta from '../assets/dupatta.avif';
-    import anarkali from '../assets/anarkali.webp';
-    import gowns from '../assets/gowns.avif';
-    import ethnicsets from '../assets/ethnic-sets.avif';    
+    import sarees from '/sarees.avif';
+    import salwarsuits from '/salwar-suits.jpg';
+    import lehengas from '/lehengas.webp';
+    import kurties from '/krutiss.webp';
+    import dupatta from '/dupatta.avif';
+    import anarkali from '/anarkali.webp';
+    import gowns from '/gowns.avif';
+    import ethnicsets from '/ethnic-sets.avif';    
 
     const categories = [
     {

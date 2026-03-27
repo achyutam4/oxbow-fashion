@@ -1,4 +1,4 @@
-import heroImage from "../assets/heroImage.webp";
+import heroImage from "/heroImage.webp";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import FeaturedProducts from "../components/FeaturedProducts";

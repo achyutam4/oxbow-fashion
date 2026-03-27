@@ -10,7 +10,7 @@ function Footer() {
                 <div className="footer-column">
                     <h2 className="footer-logo">
                          <Link to="/">
-                          <img src="/src/assets/oxbow.png" alt="oxbow"/>
+                          <img src="/oxbow.png" alt="oxbow"/>
                          </Link> 
                     </h2>
                 
@@ -19,7 +19,7 @@ function Footer() {
                      <a href="https://www.instagram.com/oxbow_creation/">
                      <FaInstagram/>
                      </a>
-                    
+                     
                      <FaWhatsapp />
                      <FaFacebook />
                  
