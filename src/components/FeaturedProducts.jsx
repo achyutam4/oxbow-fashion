@@ -1,13 +1,31 @@
-import  "./FeaturedProducts.css";
 import { Link } from "react-router-dom";
-import products from '../data/products.js';
-import { useState } from "react";
+import  "./FeaturedProducts.css";
+import { useState,useEffect } from "react";
+import axios from "axios";
 
 function FeaturedProducts() {
 
+  const [products, setProducts] = useState([]);
   const[product, setProduct]= useState(null);
   const [currentImage, setCurrentImage] = useState(0);
 
+  
+  useEffect(() => {
+    axios
+    .get("https://localhost:7082/api/products")
+    .then(res => {
+      
+      const formatted = res.data.map(p => ({
+        ...p,
+        images: p.images ? JSON.parse(p.images) : []
+      }));
+
+      setProducts(formatted);
+    });
+  },[]);
+
+  const featuredProducts = products.filter(
+    p => p.isFeatured);
 
    const nextImage = () => {
     setCurrentImage((prev) =>
@@ -24,13 +42,11 @@ function FeaturedProducts() {
 
   return(
         <section className="featured-products">
-
         <h2>Featured Products</h2>
         
         <div className="products-grid">
-          {products.slice(4, 8).map((product) => (
+          {featuredProducts.map(product => (
             <div    
-           /* to={`/product/${product.id}`} */
             key={product.id}
             className="product-link"
                onClick={() => {
@@ -40,15 +56,13 @@ function FeaturedProducts() {
             >
 
             <div className="card" >
-              <img src={product.image} alt={product.name} loading="lazy"/>
+              <img src={product.images?.[0]} />
               <h3>{product.name}</h3>
               <p>₹ {product.price}</p>
             </div>
-
              </div>
           ))}
         </div>
-
         
              {product && (
             <div className="popup-overlay">
@@ -70,7 +84,7 @@ function FeaturedProducts() {
                  </button>
 
               <img
-                src={product.images[currentImage]}
+                src={product.images?.[currentImage]}
                 alt=""
                 className="slider-image"
               />

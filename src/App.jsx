@@ -12,13 +12,17 @@ import SearchPage from "./components/SearchPage";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import TrustSection from "./components/TrustSection";
+import AdminUpload from "./pages/AdminUpload";
+import AdminLogin from "./pages/AdminLogin";
+import AdminProducts from "./pages/AdminProducts";
 
+    
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);  
   const [wishlist, setWishlist] = useState([]);
  
   return (
-    <>
+    <>  
        <ScrollToTop />
        
       <Navbar 
@@ -35,6 +39,9 @@ function App() {
      <Route path="/accessories" element={<Accessories />} />  
      <Route path ="/cart" element ={<Cart />} />
      <Route path ="/search/:query" element={<SearchPage />} />
+     <Route path="/admin/upload" element={<AdminUpload />} />
+     <Route path="/admin/login" element={<AdminLogin />} />
+     <Route path="/admin/products" element={<AdminProducts />} />
      </Routes>
       <TrustSection />
       <Footer />  

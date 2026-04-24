@@ -1,7 +1,5 @@
 .product-details {
-    display: flex;
-    gap:50px;
-    padding:60px 10%;
+    
     /* align-items: center; */
 }
 

@@ -30,6 +30,7 @@
       <li><Link to="/women">Women</Link></li>
       <li><Link to="/kids">Kids</Link></li>
       <li><Link to="/accessories">Accessories</Link></li>
+      <li><Link to="/admin/upload">Admin</Link></li>
     </ul>
  
 

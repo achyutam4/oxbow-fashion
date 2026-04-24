@@ -1,12 +1,29 @@
 import { Link } from "react-router-dom";
 import "./NewArrivals.css";
-import products from "../data/products.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function NewArrivals() {
   
+  const [products, setProducts] = useState([]);
   const[product, setProduct] = useState(null);
   const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    axios
+    .get("https://localhost:7082/api/products")
+    .then(res => {
+      
+      const formatted = res.data.map(p => ({
+        ...p,
+        images: p.images ? JSON.parse(p.images) : []
+      }));
+
+      setProducts(formatted);
+    });
+  },[]);
+
+  const newArrivals = products.filter((p) => p.isNewArrival);
 
   const nextImage = () => {
     setCurrentImage((prev) =>
@@ -22,24 +39,24 @@ function NewArrivals() {
 
   return(
           <section className="new-arrivals">
-
-             <h2>New Arrivals</h2>
+             <h2>New Arrivals</h2>  
          
-      
             <div className="products-grid">
-              {products.slice(0,4).map((product) => (
+              {newArrivals.map((product) => (
                 <div
                   /*to={`/product/${product.id}`}*/ 
                   key={product.id}
                   className="product-link"  
-                   onClick={() => setProduct(product)}
+                   onClick={() => {
+                    setProduct(product);
+                    setrCurrentImage(0);
+                   }}
                 >
                   <div className="product-card">
-                    <img src={product.image} alt={product.name} loading="lazy" />
+                    <img src={product.images?.[0]} />
                     <h3>{product.name}</h3>
                     <p>₹ {product.price}</p>
                   </div>
-
                 </div>
               ))}
             </div>
@@ -61,9 +78,9 @@ function NewArrivals() {
                 <button className="arrow left" onClick={prevImage}>
                  ❮
                  </button>
-
+              
               <img
-                src={product.images[currentImage]}
+                src={product.images?.[currentImage]}
                 alt=""
                 className="slider-image"
               />

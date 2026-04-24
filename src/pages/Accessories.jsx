@@ -22,6 +22,7 @@ function Accessories() {
   const accessoriesProducts = products.filter(
     (item) => item.category === "accessories",
   );
+
   let filteredProducts = [...accessoriesProducts];
 
   if (sortOrder === "low-high") {
@@ -98,10 +99,9 @@ function Accessories() {
                 ></span>
               ))}
             </div>
-
          {/*   <p>₹{selectedProduct.price}</p> */}
          
-          </div>
+          </div>  
         </div>
       )}
     </div>
