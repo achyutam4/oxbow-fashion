@@ -150,7 +150,7 @@ function AdminUpload() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <br /> <br />
+      {/* <br /> <br /> */}
         <input
           placeholder="Price"
           value={price}
@@ -176,39 +176,43 @@ function AdminUpload() {
           <option value="gowns">Gowns</option>
           <option value="ethnic-sets">Ethnic Sets</option>
         </select>
-        <br />
-        <br />
+      {/*  <br />
+        <br /> */}
         <div className="checkbox-row">
-          <div className="checkbox-group">
+        <label className="checkbox-group">
+          <div>
             <input
               type="checkbox"
               checked={isNewArrival}
               onChange={(e) => setIsNewArrival(e.target.checked)}
               />
-            <label>New Arrival</label>
           </div>
+              New Arrival
+          </label>
 
-          <div className="checkbox-group">
+            <label className="checkbox-group">
+          <div >
             <input
               type="checkbox"
               checked={isFeatured}
               onChange={(e) => setIsFeatured(e.target.checked)}
             />
-            <label>Featured Product</label>
           </div>
+           Featured Product
+           </label>
         </div>
-        <br /> <br />
+      {/*  <br /> <br /> */}
         <input
           ref={fileInputRef}
           type="file"
           multiple
           onChange={(e) => setFiles(e.target.files)}
           />
-        <br /> <br />
+       
         <button className="upload-btn" onClick={uploadImage}>
           Upload Images
         </button>
-        <br /> <br />
+      
         <button className="save-btn" onClick={saveProduct}>
           Save Product
         </button>

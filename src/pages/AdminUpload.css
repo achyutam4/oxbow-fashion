@@ -12,6 +12,9 @@
 }
 
 .admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
   background: #ffffff;
   padding: 25px;
   border-radius: 12px;
@@ -65,33 +68,36 @@
 .checkbox-row {
   display: flex;
   gap: 10px;
-  margin: 10px 0;
+ /* margin: 10px 0;*/
 }
 
 .checkbox-group {
   display: flex;
   align-items: center;
-  justify-content: center;
+/*  justify-content: center;*/
   gap: 12px;
 
   border: 1px solid #ddd;
-  padding: 7px 7px;
+  padding: 14px 10px;
   border-radius: 8px;
 
-  width: 220px;
+  min-width: 220px;
   background: #fafafa;
 }
 
-.checkbox-group input[type="checkbox"] {
+.checkbox-group input  {
   width: 18px;
   height: 18px;
+  margin: 0;
   cursor: pointer;
 }
 
 .checkbox-group label {
   font-size: 15px;
+  margin: 0;
   font-weight: 500;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .save-btn:hover {
