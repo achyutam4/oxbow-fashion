@@ -18,7 +18,8 @@ function AdminUpload() {
   const [editingProduct, setEditingProduct] = useState(null);
   const [filterCategory, setFilterCategory] = useState("all");
   const [subCategory, setSubCategory] = useState("");
-
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
   const [isNewArrival, setIsNewArrival] = useState(false);
   const [isFeatured, setIsFeatured] = useState(false);
 
@@ -82,6 +83,18 @@ function AdminUpload() {
     fetchProducts();
   };
 
+  const askDelete = (id) => {
+    setDeleteId(id);
+    setShowConfirm(true);
+  };
+
+  const confirmDelete = async () => {
+    await axios.delete(`/api/products/${deleteId}`);
+    setProducts(products.filter(p => p.id !== deleteId));
+    setShowConfirm(false);
+  };
+  
+
   const updateProduct = async () => {
     await axios.put(
       `https://localhost:7082/api/Products/${editingProduct.id}`,
@@ -99,49 +112,6 @@ function AdminUpload() {
 
   return (
     <div className="admin-container">
-
-      {editingProduct && (
-        <div className="edit-overlay">
-          <div className="edit-popup">
-            <h3>Edit Product</h3>
-           
-           <label className="edit-label">Product Name</label>
-            <input
-              value={editingProduct.name}
-              onChange={(e) =>
-                setEditingProduct({
-                  ...editingProduct,
-                  name: e.target.value,
-                })
-              }
-              />
-          
-          <label className="edit-label">Price</label>
-          <input
-            value={editingProduct.price}
-            onChange={(e) =>
-              setEditingProduct({
-                ...editingProduct,
-                price: e.target.value,
-              })
-            }
-          />
-
-            <div className="edit-buttons">
-              <button className="save-btn" onClick={updateProduct}>
-                Update
-              </button>
-
-            <button
-            className="delete-btn"
-            onClick={() => setEditingProduct(null)}
-            >
-              Cancel
-            </button>
-            </div>
-            </div>
-           </div>
-      )}
 
       <div className="admin-form">
         <h2>Add Product</h2>
@@ -254,7 +224,7 @@ function AdminUpload() {
 
                   <button
                     className="delete-btn"
-                    onClick={() => deleteProduct(p.id)}
+                    onClick={() => askDelete(product.id)} 
                   >
                     Delete
                   </button>
@@ -262,6 +232,23 @@ function AdminUpload() {
               </div>
             );
           })}
+        
+         {showConfirm && (
+        <div className="confirm-overlay">
+          <div className="confirm-box">
+            <p>Delete this product?</p>
+
+            <button onClick={confirmDelete}>
+              Yes Delete
+            </button>
+
+            <button onClick={() => setShowConfirm(false)}>
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
         </div>
       </div>
     </div>

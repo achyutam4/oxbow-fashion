@@ -68,6 +68,7 @@
 .checkbox-row {
   display: flex;
   gap: 10px;
+  width:100%;
  /* margin: 10px 0;*/
 }
 
@@ -80,8 +81,8 @@
   border: 1px solid #ddd;
   padding: 14px 10px;
   border-radius: 8px;
-
-  min-width: 220px;
+  width: 100%;
+  box-sizing: border-box;
   background: #fafafa;
 }
 
@@ -229,4 +230,13 @@
   font-weight: 600;
   margin-top: 5px;
   color: #333;
+}
+
+
+@media (max-width: 560px) {
+  .checkbox-row {
+    flex-direction: column;
+    font-size: 12px;
+
+  }
 }

@@ -61,7 +61,7 @@
         const [products, setProducts] = useState([]);
 
         useEffect(() => {
-          axios.get("https://localhost:7082/api/products").then((res) => {
+          axios.get("https://shoppingapi-production.up.railway.app/api/products").then((res) => {
             const formatted = res.data.map((p) => ({
               ...p,
               images: p.images ? JSON.parse(p.images) : [],

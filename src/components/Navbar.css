@@ -90,6 +90,18 @@
   }
 }
 
+@media (max-width: 550px) {
+.navbar {
+  padding: 4px 20px;
+}
+.nav-links {
+  font-size:18px;
+}
+.logo img {
+  width: 70px;
+  height: 30px;
+}
+}
 
 @media (max-width: 486px) {
 
@@ -98,7 +110,7 @@
   }
 
   .nav-links {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .logo img {
@@ -107,30 +119,18 @@
   }
 }
 
-
 @media (max-width:458px) {
   .nav-links {
-    font-size: 16px;
+    font-size: 12px;
   }
 
   .logo img {
-    width: 60px;
-    height: 25px;
+    width: 50px;
+    height: 20px;
   }
 
   .trust-item p {
     font-size: 12px;
-  }
-}
-
-@media (max-width:424px) {
-  .nav-links {
-    font-size: 14px;
-  }
-
-  .logo img {
-    width: 55px;
-    height: 22px;
   }
 }
 
@@ -140,11 +140,7 @@
     font-size: 10px;
     gap: 15px;
   }
-
-  .logo img {
-    width: 55px;
-    height: 22px;
-  }
+ 
 }
 
 
