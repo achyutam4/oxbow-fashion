@@ -12,7 +12,7 @@ function AdminLogin() {
     const login = async() => {
         try{
             await axios.post(
-                "https://localhost:7082/api/auth/login",
+                `${import.meta.env.VITE_API_URL}/api/auth/login`,
                 {username,password}
             );
 

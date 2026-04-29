@@ -4,7 +4,7 @@ import axios from "axios";
 import "./AdminUpload.css";
 //import { PiFunctionDuotone } from "react-icons/pi";
 
-const API = "https://localhost:7082";
+const API = "https://shoppingapi-production-fea5.up.railway.app/";
 
 function AdminUpload() {
   const navigate = useNavigate();
@@ -79,7 +79,7 @@ function AdminUpload() {
   };
 
   const deleteProduct = async (id) => {
-    await axios.delete(`${API}/api/Products/${id}`);
+    await axios.delete(`${API}/api/Products/${deleteId}`);
     fetchProducts();
   };
 
@@ -97,7 +97,7 @@ function AdminUpload() {
 
   const updateProduct = async () => {
     await axios.put(
-      `https://localhost:7082/api/Products/${editingProduct.id}`,
+      `${import.meta.env.VITE_API_URL}/api/products`,
       editingProduct,
     );
 
@@ -224,7 +224,7 @@ function AdminUpload() {
 
                   <button
                     className="delete-btn"
-                    onClick={() => askDelete(product.id)} 
+                    onClick={() => askDelete(p.id)} 
                   >
                     Delete
                   </button>

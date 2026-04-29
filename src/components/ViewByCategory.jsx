@@ -61,7 +61,7 @@
         const [products, setProducts] = useState([]);
 
         useEffect(() => {
-          axios.get("https://shoppingapi-production.up.railway.app/api/products").then((res) => {
+          axios.get(`${import.meta.env.VITE_API_URL}/api/products`).then((res) => {
             const formatted = res.data.map((p) => ({
               ...p,
               images: p.images ? JSON.parse(p.images) : [],
