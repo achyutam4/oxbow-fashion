@@ -4,7 +4,7 @@ import axios from "axios";
 import "./AdminUpload.css";
 //import { PiFunctionDuotone } from "react-icons/pi";
 
-const API = "https://shoppingapi-production-fea5.up.railway.app/";
+const API = "https://localhost:7082";
 
 function AdminUpload() {
   const navigate = useNavigate();
@@ -36,7 +36,9 @@ function AdminUpload() {
   }, []);
 
   const fetchProducts = () => {
-    axios.get(`${API}/api/Products`).then((res) => setProducts(res.data));
+    axios.get(`${API}/api/Products`)
+    .then((res) => setProducts(res.data))
+    .catch(err => console.error((err)));
   };
 
   const uploadImage = async () => {
@@ -47,9 +49,9 @@ function AdminUpload() {
       formData.append("file", file);
 
       const res = await axios.post(`${API}/api/upload`, formData);
-
       uploaded.push(res.data);
     }
+
     setUploadedImages(uploaded);
   };
 
@@ -73,65 +75,78 @@ function AdminUpload() {
     setCategory("women");
     setFiles([]);
     setUploadedImages([]);
+    setIsNewArrival(false);
+    setIsFeatured(false);
     fileInputRef.current.value = "";
 
     fetchProducts();
   };
 
   const deleteProduct = async (id) => {
-    await axios.delete(`${API}/api/Products/${deleteId}`);
+    await axios.delete(`${API}/api/Products/${id}`);
     fetchProducts();
   };
 
   const askDelete = (id) => {
+     console.log("DELETE CLICKED:", id);
     setDeleteId(id);
-    setShowConfirm(true);
+    setShowConfirm(true); 
   };
 
   const confirmDelete = async () => {
-    await axios.delete(`/api/products/${deleteId}`);
-    setProducts(products.filter(p => p.id !== deleteId));
-    setShowConfirm(false);
-  };
-  
+
+      try{
+         console.log("DELETE ID:", deleteId);
+
+        const res = await axios.delete(`${API}/api/Products/${deleteId}`);
+
+        console.log("SUCCESS:", res);
+
+        setShowConfirm(false);
+        setDeleteId(null);
+        fetchProducts();
+
+      }catch (err) {
+        console.error("DELETE ERROR:",err);
+      }
+    };
 
   const updateProduct = async () => {
-    await axios.put(
-      `${import.meta.env.VITE_API_URL}/api/products`,
-      editingProduct,
-    );
-
-    setEditingProduct(null);
+    await axios.put(`${API}/api/Products`, editingProducts);
     fetchProducts();
   };
 
-  const filteredProducts =
-    filterCategory === "all"
-      ? products
-      : products.filter((p) => p.category === filterCategory);
+  const filteredProducts = 
+  filterCategory === "all"
+  ? products
+  : products.filter((p) => p.category === filterCategory);
 
   return (
     <div className="admin-container">
-
       <div className="admin-form">
         <h2>Add Product</h2>
+
         <input
           placeholder="Product Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+
       {/* <br /> <br /> */}
+
         <input
           placeholder="Price"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         />
+ 
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="">Select Section</option>
           <option value="women">Women</option>
           <option value="accessories">Accessories</option>
           <option value="kids">Kids</option>
         </select>
+      
         <select
           value={subCategory}
           onChange={(e) => setSubCategory(e.target.value)}
@@ -146,10 +161,13 @@ function AdminUpload() {
           <option value="gowns">Gowns</option>
           <option value="ethnic-sets">Ethnic Sets</option>
         </select>
+
       {/*  <br />
         <br /> */}
+
         <div className="checkbox-row">
         <label className="checkbox-group">
+
           <div>
             <input
               type="checkbox"
@@ -186,14 +204,17 @@ function AdminUpload() {
         <button className="save-btn" onClick={saveProduct}>
           Save Product
         </button>
+
         <br /> <br />
         <div className="preview-images">
           {uploadedImages.map((img, index) => (
             <img key={index} src={img} width="120" />
           ))}
         </div>
+
         <hr />
         <h2>Modify Products</h2>
+
         <select
           value={filterCategory}
           onChange={(e) => setFilterCategory(e.target.value)}
@@ -203,8 +224,9 @@ function AdminUpload() {
           <option value="accessories">Accessories</option>
           <option value="kids">Kids</option>
         </select>
-        <br />
-        <br />
+        
+        <br /><br />
+
         <div className="products-grid-admin">
           {filteredProducts.map((p) => {
             const imgs = JSON.parse(p.images);

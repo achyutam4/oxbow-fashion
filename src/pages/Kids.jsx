@@ -1,28 +1,26 @@
- 
-import "./Accessories.css";
+import "./Kids.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const API = "https://localhost:7082";
 
-
-function Accessories() {
+function Kids() {
   const [products, setProducts] = useState([]);
-
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [currentImage, setCurrentImage] = useState(0);
   const [sortOrder, setSortOrder] = useState("");
 
   useEffect(() => {
-    axios.get("https://localhost:7082/api/Products")
-    .then(res => setProducts(res.data))
-    .catch(err => console.error(err));
-  }, []); 
+    axios.get(`${API}/api/Products`)
+      .then(res => setProducts(res.data))
+      .catch(err => console.error(err));
+  }, []);
 
   const nextImage = () => {
     const imgs = JSON.parse(selectedProduct.images);
-    
-    setCurrentImage((prev) => 
-    prev === imgs.length - 1 ? 0 : prev + 1
+
+    setCurrentImage((prev) =>
+      prev === imgs.length - 1 ? 0 : prev + 1
     );
   };
 
@@ -30,16 +28,18 @@ function Accessories() {
     const imgs = JSON.parse(selectedProduct.images);
 
     setCurrentImage((prev) =>
-      prev === 0 ? imgs.length - 1 : prev - 1,
+      prev === 0 ? imgs.length - 1 : prev - 1
     );
   };
 
-  const accessoriesProducts = products.filter(
-    (item) => item.category === "accessories"
+  // ✅ FILTER ONLY KIDS PRODUCTS
+  const kidsProducts = products.filter(
+    (item) => item.category === "kids"
   );
 
-  let filteredProducts = [...accessoriesProducts];
+  let filteredProducts = [...kidsProducts];
 
+  // ✅ SORTING
   if (sortOrder === "low-high") {
     filteredProducts.sort((a, b) => a.price - b.price);
   }
@@ -50,56 +50,53 @@ function Accessories() {
 
   return (
     <div className="category-page">
-      <h2>ACCESSORIES</h2>
+      <h2>KIDS</h2>
 
       <div className="filters">
         <select onChange={(e) => setSortOrder(e.target.value)}>
           <option value="">Sort By</option>
-          <option value="low-high">Price:Low to High </option>
-          <option value="high-low">Price:High to Low</option>
+          <option value="low-high">Price: Low to High</option>
+          <option value="high-low">Price: High to Low</option>
         </select>
       </div>
-    
+
       <div className="products-grid">
-        {filteredProducts.map((product) => {  
+        {filteredProducts.map((product) => {
           const imgs = JSON.parse(product.images);
 
-          return(
-          <div
-            key={product.id}
-            className="product-card"
-            onClick={() => {
-              setSelectedProduct(product);
-              setCurrentImage(0);
-            }}
-          >
-
-            <img src={imgs[0]} alt="" />
-            <h3>{product.name}</h3>
-            <p>₹{product.price}</p>
-          </div>
-        );
-       })}
+          return (
+            <div
+              key={product.id}
+              className="product-card"
+              onClick={() => {
+                setSelectedProduct(product);
+                setCurrentImage(0);
+              }}
+            >
+              <img src={imgs[0]} alt="" />
+              <h3>{product.name}</h3>
+              <p>₹{product.price}</p>
+            </div>
+          );
+        })}
       </div>
 
+      {/* ✅ POPUP */}
       {selectedProduct && (
-        <div 
-        className="accessories-popup-overlay" 
-        onClick={() => setSelectedProduct(null)}
+        <div
+          className="accessories-popup-overlay"
+          onClick={() => setSelectedProduct(null)}
         >
-          <div 
-          className="accessories-popup" 
-          onClick={(e) => e.stopPropagation()}
+          <div
+            className="accessories-popup"
+            onClick={(e) => e.stopPropagation()}
           >
-           
             <button
               className="accessories-close-btn"
               onClick={() => setSelectedProduct(null)}
             >
               X
             </button>
-
-           {/* <h2>{selectedProduct.name}</h2> */ }
 
             <div className="accessories-slider">
               <button className="arrow left" onClick={prevImage}>
@@ -118,7 +115,7 @@ function Accessories() {
             </div>
 
             <div className="image-indicators">
-              {JSON.parse(selelctedProduct.images).map((_, index) => (
+              {JSON.parse(selectedProduct.images).map((_, index) => (
                 <span
                   key={index}
                   className={index === currentImage ? "dot active-dot" : "dot"}
@@ -126,14 +123,15 @@ function Accessories() {
                 ></span>
               ))}
             </div>
-
+              {/*
             <h3>{selectedProduct.name}</h3>
             <p>₹{selectedProduct.price}</p>
-          </div>  
+              */}
+          </div>
         </div>
       )}
     </div>
   );
 }
 
-export default Accessories;
+export default Kids;

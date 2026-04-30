@@ -15,7 +15,7 @@ function Home() {
 
   useEffect(() => {
     axios 
-    .get(`${import.meta.env.VITE_API_URL}/api/products`)
+    .get("https://localhost:7082/api/products")
     .then(res =>{
       const formatted = res.data.map(p => ({
         ...p,

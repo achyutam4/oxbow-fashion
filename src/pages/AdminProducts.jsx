@@ -7,7 +7,7 @@ function AdminProducts(){
 
     const loadProducts = async() => {   
         const res = await axios.get(
-           `${import.meta.env.VITE_API_URL}/api/products`
+            "https://localhost:7082/api/Products"
         );
         
         setProducts(res.data);

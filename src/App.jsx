@@ -15,6 +15,7 @@ import TrustSection from "./components/TrustSection";
 import AdminUpload from "./pages/AdminUpload";
 import AdminLogin from "./pages/AdminLogin";
 import AdminProducts from "./pages/AdminProducts";
+import Kids from "./pages/Kids";
 
     
 function App() {
@@ -42,6 +43,7 @@ function App() {
      <Route path="/admin/upload" element={<AdminUpload />} />
      <Route path="/admin/login" element={<AdminLogin />} />
      <Route path="/admin/products" element={<AdminProducts />} />
+     <Route path="/kids" element={<Kids />} />
      </Routes>
       <TrustSection />
       <Footer />  
