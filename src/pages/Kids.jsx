@@ -32,14 +32,13 @@ function Kids() {
     );
   };
 
-  // ✅ FILTER ONLY KIDS PRODUCTS
-  const kidsProducts = products.filter(
+   const kidsProducts = products.filter(
     (item) => item.category === "kids"
   );
 
   let filteredProducts = [...kidsProducts];
 
-  // ✅ SORTING
+ 
   if (sortOrder === "low-high") {
     filteredProducts.sort((a, b) => a.price - b.price);
   }
@@ -80,8 +79,8 @@ function Kids() {
           );
         })}
       </div>
-
-      {/* ✅ POPUP */}
+ 
+ 
       {selectedProduct && (
         <div
           className="accessories-popup-overlay"

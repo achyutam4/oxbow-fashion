@@ -112,16 +112,126 @@ function AdminUpload() {
     };
 
   const updateProduct = async () => {
-    await axios.put(`${API}/api/Products`, editingProducts);
+    try{
+     await axios.put(
+      `${API}/api/Products/${editingProduct.id}`,
+      editingProduct
+    );
+
+    setEditingProduct(null);
     fetchProducts();
-  };
+  } catch(err) {
+    console.error(err);
+  }
+};
 
   const filteredProducts = 
   filterCategory === "all"
   ? products
   : products.filter((p) => p.category === filterCategory);
 
+
+
   return (
+    <div>
+    {editingProduct && (
+  <div className="edit-overlay">
+    <div className="edit-modal">
+      <h3>Edit Product</h3>
+    
+    <label className="edit-label">Product Name</label>
+      <input
+        value={editingProduct.name}
+        onChange={(e) =>
+          setEditingProduct({ ...editingProduct, name: e.target.value })
+        }
+      />
+
+      <label className="edit-label">Price</label>
+      <input
+        value={editingProduct.price}
+        onChange={(e) =>
+          setEditingProduct({ ...editingProduct, price: e.target.value })
+        }
+      />
+      
+      <label className="edit-label">Section</label>
+       <select
+          value={editingProduct.category}
+          onChange={(e) =>
+          setEditingProduct({ ...editingProduct, category: e.target.value })
+        }
+      >
+
+
+        <option value="women">Women</option>
+        <option value="accessories">Accessories</option>
+        <option value="kids">Kids</option>
+      </select>
+
+      {/* Sub Category */}
+      <label className="edit-label">Category</label>
+      <select
+        value={editingProduct.subCategory || ""}
+        onChange={(e) =>
+          setEditingProduct({
+            ...editingProduct,
+            subCategory: e.target.value,
+          })
+        }
+      >
+        <option value="">Select Category</option>
+        <option value="sarees">Sarees</option>
+        <option value="anarkali">Anarkali</option>
+        <option value="kurtis">Kurtis</option>
+        <option value="salwar-suits">Salwar Suits</option>
+        <option value="dupatta">Dupatta</option>
+        <option value="lehengas">Lehengas</option>
+        <option value="gowns">Gowns</option>
+        <option value="ethnic-sets">Ethnic Sets</option>
+      </select>
+
+    <br /> <br />
+      {/* New Arrival */}
+      <label >
+        <input
+          type="checkbox"
+          checked={editingProduct.isNewArrival}
+          onChange={(e) =>
+            setEditingProduct({
+              ...editingProduct,
+              isNewArrival: e.target.checked,
+            })
+          }
+        />
+        New Arrival
+      </label>
+          <br />
+      {/* Featured */}
+      <label >
+        <input
+          type="checkbox"
+          checked={editingProduct.isFeatured}
+          onChange={(e) =>
+            setEditingProduct({
+              ...editingProduct,
+              isFeatured: e.target.checked,
+            })
+          }
+        />
+        Featured Product
+      </label>
+     
+      <div className="edit-actions">
+      <button onClick={updateProduct}>Update</button>    
+      <button onClick={() => setEditingProduct(null)}>Cancel</button>
+      </div>
+
+    </div>
+  </div>
+)}
+
+
     <div className="admin-container">
       <div className="admin-form">
         <h2>Add Product</h2>
@@ -139,6 +249,7 @@ function AdminUpload() {
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         />
+
  
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="">Select Section</option>
@@ -235,6 +346,7 @@ function AdminUpload() {
               <div key={p.id} className="product-card-admin">
                 <img src={imgs[0]} width="150" />
                 <h4>{p.name}</h4>
+                <h6>{p.price}</h6>
 
                 <div className="admin-card-buttons">
                   <button
@@ -273,6 +385,7 @@ function AdminUpload() {
 
         </div>
       </div>
+    </div>
     </div>
   );
 }
