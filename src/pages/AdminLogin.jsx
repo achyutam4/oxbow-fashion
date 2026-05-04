@@ -25,9 +25,10 @@ function AdminLogin() {
     };
 
     return(
-        <div>
+        <div className="admin-login-container">
+            <div className="admin-login-box">
             <h2>Admin Login</h2>
-        
+
         <input 
         placeholder="username"
         onChange = {(e)=>setUsername(e.target.value)}/>
@@ -39,6 +40,8 @@ function AdminLogin() {
     /> 
 
     <button onClick={login}>Login</button>
+
+            </div>
     </div>
     );
 }
