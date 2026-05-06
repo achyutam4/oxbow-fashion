@@ -13,7 +13,7 @@ function Accessories() {
   const [sortOrder, setSortOrder] = useState("");
 
   useEffect(() => {
-    axios.get("https://localhost:7082/api/Products")
+    axios.get("https://mybackendapi123-d4e2fzh5gpbqhwfd.centralindia-01.azurewebsites.net/api/Products")
     .then(res => setProducts(res.data))
     .catch(err => console.error(err));
   }, []); 

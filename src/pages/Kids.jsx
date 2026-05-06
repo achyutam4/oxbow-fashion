@@ -2,7 +2,10 @@ import "./Kids.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const API = "https://localhost:7082";
+//const API = process.env.REACT_APP_API_URL;
+
+const API = "https://mybackendapi123-d4e2fzh5gpbqhwfd.centralindia-01.azurewebsites.net";
+
 
 function Kids() {
   const [products, setProducts] = useState([]);

@@ -12,7 +12,7 @@ function FeaturedProducts() {
   
   useEffect(() => {
     axios
-    .get("https://localhost:7082/api/products")
+    .get("https://mybackendapi123-d4e2fzh5gpbqhwfd.centralindia-01.azurewebsites.net/api/products")
     .then(res => {
       
       const formatted = res.data.map(p => ({

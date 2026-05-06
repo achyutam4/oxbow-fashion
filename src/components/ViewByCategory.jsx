@@ -61,7 +61,7 @@
         const [products, setProducts] = useState([]);
 
         useEffect(() => {
-          axios.get("https://localhost:7082/api/products").then((res) => {
+          axios.get("https://mybackendapi123-d4e2fzh5gpbqhwfd.centralindia-01.azurewebsites.net/api/products").then((res) => {
             const formatted = res.data.map((p) => ({
               ...p,
               images: p.images ? JSON.parse(p.images) : [],

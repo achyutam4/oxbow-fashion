@@ -12,7 +12,7 @@ function AdminLogin() {
     const login = async() => {
         try{
             await axios.post(
-                "https://localhost:7082/api/auth/login",
+                "https://mybackendapi123-d4e2fzh5gpbqhwfd.centralindia-01.azurewebsites.net/api/auth/login",
                 {username,password}
             );
 

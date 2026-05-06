@@ -7,7 +7,7 @@ function AdminProducts(){
 
     const loadProducts = async() => {   
         const res = await axios.get(
-            "https://localhost:7082/api/Products"
+            "https://mybackendapi123-d4e2fzh5gpbqhwfd.centralindia-01.azurewebsites.net/api/Products"
         );
         
         setProducts(res.data);

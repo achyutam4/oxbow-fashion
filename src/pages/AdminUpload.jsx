@@ -4,7 +4,7 @@ import axios from "axios";
 import "./AdminUpload.css";
 //import { PiFunctionDuotone } from "react-icons/pi";
 
-const API = "https://localhost:7082";
+const API = "https://mybackendapi123-d4e2fzh5gpbqhwfd.centralindia-01.azurewebsites.net";
 
 function AdminUpload() {
   const navigate = useNavigate();
