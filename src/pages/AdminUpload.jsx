@@ -29,7 +29,7 @@ function AdminUpload() {
     const admin = localStorage.getItem("admin");
 
     if (!admin) {
-      navigate("/admin/login");
+      navigate("/admin");
     }
 
     fetchProducts();

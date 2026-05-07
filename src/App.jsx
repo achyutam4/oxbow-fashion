@@ -41,7 +41,7 @@ function App() {
      <Route path ="/cart" element ={<Cart />} />
      <Route path ="/search/:query" element={<SearchPage />} />
      <Route path="/admin/upload" element={<AdminUpload />} />
-     <Route path="/admin/login" element={<AdminLogin />} />
+     <Route path="/admin/" element={<AdminLogin />} />
      <Route path="/admin/products" element={<AdminProducts />} />
      <Route path="/kids" element={<Kids />} />
      </Routes>
