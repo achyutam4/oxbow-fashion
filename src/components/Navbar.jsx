@@ -1,8 +1,8 @@
-    import {Link} from "react-router-dom";
+ 
     import { FaUser, FaRegHeart, FaShoppingCart, FaSearch  } from "react-icons/fa";
     import "./Navbar.css"
     import { useState,useContext } from "react";
-    import { useNavigate } from "react-router-dom";
+    import {Link, useNavigate } from "react-router-dom";
     import {CartContext} from "../context/CartContext";
 
     function Navbar({isLoggedIn,setIsLoggedIn}) {
@@ -15,6 +15,13 @@
         0
     );
     const [query, setQuery] = useState('');
+    
+    const isAdminLoggedIn = localStorage.getItem("adminToken");
+
+    const logout = () => {
+        localStorage.removeItem("adminToken");
+        navigate("/admin");
+    };
 
     return (
     
@@ -31,78 +38,21 @@
       <li><Link to="/kids">Kids</Link></li>
       <li><Link to="/accessories">Accessories</Link></li>
        {/*<li><Link to="/admin/upload">Admin</Link></li>*/} 
+      
+        {isAdminLoggedIn && (
+                    <button
+                        className="logout-btn"
+                        onClick={logout}
+                    >
+                        Logout
+                    </button>
+        )}
+   
    </ul>
+
+   
  
 
-
-   {/*/
-    <div className="nav-right">
-   
-      <form
-        className="search-container"
-        onSubmit={(e) => {
-          e.preventDefault();
-          if (query.trim() !== "") {
-            navigate(`/search/${query}`);
-            setQuery("");
-          }
-        }}
-      >
-        
-        <input
-          type="search"
-          placeholder="Search..."
-          className="search-bar"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          enterKeyHint="search"
-        />
-      
-        <button type="submit" className="search-button">
-          <FaSearch />
-        </button> 
-        
-      </form>
-    */}
-    {/*   
-      <Link to="/wishlist" className="icon">
-        <FaRegHeart />
-      </Link>
-
-      <div className="user-section">
-        <button
-          className="icon"
-          onClick={() => setShowDropDown(!showDropDown)}
-        >
-          <FaUser />
-        </button>
-
-        {showDropDown && (
-          <div className="dropdown">
-            {!isLoggedIn ? (
-              <>
-                <p onClick={() => setIsLoggedIn(true)}>Login</p>
-                <p onClick={() => setIsLoggedIn(true)}>SignUp</p>
-              </>
-            ) : (
-              <>
-                <p>Welcome, User</p>
-                <p onClick={() => setIsLoggedIn(false)}>Logout</p>
-              </>
-            )}  
-          </div>
-        )}
-      </div>
-
-      <button onClick={() => navigate("/cart")} className="icon">
-        <FaShoppingCart />
-        {totalItems > 0 && (
-          <span className="cart-badge">{totalItems}</span>
-        )}
-      </button>
-          
-    </div>
-    */}
   </nav>
 
   
