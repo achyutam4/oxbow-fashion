@@ -26,7 +26,7 @@ function AdminUpload() {
   const fileInputRef = useRef();
 
   useEffect(() => {
-    const admin = localStorage.getItem("admin");
+    const admin = localStorage.getItem("adminToken");
 
     if (!admin) {
       navigate("/admin");

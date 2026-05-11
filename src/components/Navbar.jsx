@@ -16,11 +16,15 @@
     );
     const [query, setQuery] = useState('');
     
-    const isAdminLoggedIn = localStorage.getItem("adminToken");
+    const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(
+     !!localStorage.getItem("adminToken")  
+    );
 
     const logout = () => {
         localStorage.removeItem("adminToken");
         navigate("/admin");
+
+        window.location.reload();
     };
 
     return (

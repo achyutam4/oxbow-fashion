@@ -12,20 +12,23 @@ function AdminLogin() {
     useEffect(() => {
         const token = localStorage.getItem("adminToken");
 
-        if(token){
+        if(token === "true") {
             navigate("/admin/upload");
         }
-    }, []);
-
-    const login = async() => {
+    }, [navigate]);
+ 
+    const login = async () => {
+        
         try{
             await axios.post(
                 "https://mybackendapi123-d4e2fzh5gpbqhwfd.centralindia-01.azurewebsites.net/api/auth/login",
                 {username,password}
             );
 
-            localStorage.setItem("admin","true");
+            localStorage.setItem("adminToken","true");
             navigate("/admin/upload");
+
+            window.location.reload();
 
         }catch {
             alert("Invalid Login");
@@ -35,7 +38,7 @@ function AdminLogin() {
     return(
         <div className="admin-login-container">
             <div className="admin-login-box">
-                
+
             <h2>Admin Login</h2>
 
         <input 
